@@ -1,19 +1,18 @@
 <template>
   <MainHeader />
-
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">Sobre</router-link>
-  </nav>
+  <MainNavBar />
+  
   <router-view/>
 </template>
 
 <script>
 import MainHeader from '@/components/MainHeader.vue'
+import MainNavBar from '@/components/MainNavBar.vue'
 
 export default {
   components: {
-    MainHeader
+    MainHeader,
+    MainNavBar
   }
 }
 </script>
