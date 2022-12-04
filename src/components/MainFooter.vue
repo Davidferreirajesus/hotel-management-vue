@@ -19,18 +19,15 @@
                     </div>
                     <div class="row">
                         <i class=" col-sm-2 fa fa-envelope fa-1x" aria-hidden="true"></i>
-                        <p class=" col-sm-10 color--bege">contato@granghoyalhotel.com</p>
+                        <p class=" col-sm-10 color--bege">contato@grandroyalhotel.com</p>
                     </div>
                     <div class="row">
                         <i class=" col-sm-2 fa fa-map-marker fa-1x" aria-hidden="true"></i>
                         <p class=" col-sm-10 color--bege">Rua Algum Lugar, n° 0 - Centro <br /> São Paulo - Brasil
                         </p>
                     </div>
-                    <div class="col">
-                        <a><i class="fa-brands fa-whatsapp fa-3x"></i></a>
-                        <a><i class="fa-brands fa-instagram fa-3x"></i></a>
-                        <a><i class="fa-brands fa-facebook fa-3x"></i></a>
-                        <a><i class="fa-brands fa-linkedin-in fa-3x"></i></a>
+                    <div class="col d-flex">
+                        <SocialMedia />
                     </div>
                 </div>
                  <div class="col-sm-6 row color--bege p-5">
@@ -39,7 +36,7 @@
                 </div>
             </div>
             <div class="row-sm-10 p-1 text-end">
-                <span class="color--bege">Grand Hoyal Hotel&copy;2022 - Todos os direitos reservados.</span>
+                <span class="color--bege">Grand Royal Hotel&copy;2022 - Todos os direitos reservados.</span>
             </div>
         </div>
     </footer>
@@ -47,11 +44,13 @@
 
 <script>
 import MainNavBar from '@/components/MainNavBar.vue'
+import SocialMedia from '@/components/SocialMedia.vue'
 
 export default {
     name: 'MainFooter',
     components: {
-        MainNavBar
+        MainNavBar,
+        SocialMedia
     }
 }
 </script>

@@ -14,23 +14,7 @@
         <div class="d-flex align-items-center">
             <router-link to="/" class="header--logo" title="Grand Hoyal Hotel"></router-link>
             <div class="header--container2">
-                <ul class="header--container2-container">
-                    <li class="header--container2-item">
-                        <a href="#" class="header--container2-link text-bege">
-                            <i class="fa-brands fa-whatsapp fa-2x"></i>
-                        </a>
-                    </li>
-                    <li class="header--container2-item">
-                        <a href="#" class="header--container2-link text-bege">
-                            <i class="fa-brands fa-instagram fa-2x"></i>
-                        </a>
-                    </li>
-                    <li class="header--container2-item">
-                        <a href="#" class="header--container2-link text-bege">
-                            <i class="fa-brands fa-facebook-f fa-2x"></i>
-                        </a>
-                    </li>
-                </ul>
+                <SocialMedia />
                 <p class="header--container2-container alinhamento m-1 p-1">
                     A sofisticação e o conforto ideal.<br />
                     Vem ser Grand, vem ser Royal!
@@ -44,8 +28,13 @@
 import "@/assets/css/main.css"
 import "@/assets/css/header-footer.css"
 
+import SocialMedia from '@/components/SocialMedia.vue'
+
 export default {
     name: 'MainHeader',
+    components: {
+        SocialMedia
+    }
 }
 </script>
 
