@@ -1,5 +1,7 @@
 <template>
-  <h2>HOME</h2>
+  <main>
+    <h2>HOME</h2>
+  </main>
 </template>
 
 <script>

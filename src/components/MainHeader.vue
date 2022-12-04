@@ -12,7 +12,7 @@
             </button>
         </div> -->
         <div class="d-flex align-items-center">
-            <a class="header--logo" href="/pages/home.html" title="Grand Hoyal Hotel"></a>
+            <router-link to="/" class="header--logo" title="Grand Hoyal Hotel"></router-link>
             <div class="header--container2">
                 <ul class="header--container2-container">
                     <li class="header--container2-item">

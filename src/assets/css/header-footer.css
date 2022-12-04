@@ -55,5 +55,14 @@
 
 .nav-link.router-link-active,
 .nav-link.router-link-exact-active {
+    font-weight: bold;
     color: #cf9903;
+}
+
+.footer__logo {
+  width: 75px;
+}
+
+.teste {
+  
 }
