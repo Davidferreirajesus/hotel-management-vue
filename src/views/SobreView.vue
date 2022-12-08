@@ -16,7 +16,7 @@
           <p class="p-primario">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quaerat ullam vitae magni recusandae, earum sit similique? Suscipit aut facere reprehenderit. Ipsam sit dolore provident perferendis aliquid, repudiandae reiciendis similique?</p>
           <p class="p-primario">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quaerat ullam vitae magni recusandae, earum sit similique? Suscipit aut facere reprehenderit. Ipsam sit dolore provident perferendis aliquid, repudiandae reiciendis similique?</p>
           <p class="p-primario">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic dicta voluptatibus temporibus necessitatibus possimus tenetur ad facilis inventore, reiciendis amet magni quis non, aliquid odit et sit ducimus! Deserunt soluta deleniti a! Ea, praesentium assumenda. Quisquam harum asperiores in ad, maiores velit fugiat dicta molestias magnam esse id non repellat.</p>
-          <img class="img-fluid mx-auto d-block" src="/images/background/background-2.png" alt="Sobre o hotel"/>
+          <img class="img-fluid mx-auto d-block" src="@/assets/images/background/background-2.png" alt="Sobre o hotel"/>
           <p class="p-primario">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic dicta voluptatibus temporibus necessitatibus possimus tenetur ad facilis inventore, reiciendis amet magni quis non, aliquid odit et sit ducimus! Deserunt soluta deleniti a! Ea, praesentium assumenda. Quisquam harum asperiores in ad, maiores velit fugiat dicta molestias magnam esse id non repellat.</p>
         </article>
         <aside class="esconder">

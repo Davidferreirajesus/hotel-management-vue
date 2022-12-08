@@ -95,3 +95,14 @@
   </body>
     </main>
 </template>
+
+<script>
+import "@/assets/css/acomodacoes.css"
+
+export default{
+  name: 'AcomodacoesView'
+}
+
+
+
+</script>
