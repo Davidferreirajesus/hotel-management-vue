@@ -20,7 +20,7 @@ const routes = [
   {
     path: '/reservas',
     name: 'reservas',
-    // component: () => import('../views/ReservasView.vue')
+    component: () => import('../views/ReservasView.vue')
   },
   {
     path: '/contato',

@@ -1,0 +1,195 @@
+<template>
+    <main>
+        <body>
+
+
+
+    <main>
+        <section>
+
+            <fieldset>
+                <div class="myReservation p-top">
+                    <h2 class="h2-primario ">Minha Reserva</h2>
+                    <p class="p-primario">
+                        Forneça a data de entrada, saída e quantidade de pessoas.
+                    </p>
+                    <span class="margin-left">
+                        <input class="input-padrao" type="date" name="checkin" id="checkin" required>
+                        <input class="input-padrao" type="date" name="checkout" id="checkout" required>
+                        <input class="input-padrao" type="number" name="qtdPessoas" id="qtdPessoas" min="1" required>
+                    </span>
+                    <p class="p-primario">Escolha o quarto</p>
+                </div>
+                <section class="display-grid">
+                    <article class=" ">
+                        <div class="display-grid borda-padrao">
+                            <img class="imagem-padrao" src="@/assets/images/acomodacoes/acomodacoes-presidencial-1.png" alt="">
+                            <div class=" ">
+                                <h3 class="h3-primario">Executive</h3>
+                                <p class="p-primario">Executive ipsum dolor sit amet consectetur adipisicing elit. Sit
+                                    nobis aliquam quibusdam aliquid quam perferendis autem eum numquam earum nam
+                                    corporis mollitia cumque error, id quod laboriosam presidencial.</p>
+                                <p class="p-primario">R$190,00</p>
+                                <div class="p-primario">
+                                    <label for="executive"> <input class="radioRoomChoice" type="radio"
+                                            name="roomChoice" id="executive" value="executive" required><span>
+                                            Selecionar o quarto Presidencial</span></label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="display-grid borda-padrao">
+                            <img class="imagem-padrao" src="@/assets/images/acomodacoes/acomodacoes-luxo-1.png" alt="">
+                            <div>
+                                <h3 class="h3-primario">Classic</h3>
+                                <p class="p-primario">Luxo ipsum dolor sit amet consectetur adipisicing elit. Sit nobis
+                                    aliquam quibusdam aliquid quam perferendis autem eum numquam earum nam corporis
+                                    mollitia cumque error, id quod laboriosam luxo.</p>
+                                <p class="p-primario">
+                                    R$250,00
+                                </p>
+
+                                <div class="p-primario">
+                                    <label for="classic"> <input class="radioRoomChoice" type="radio" name="roomChoice"
+                                            id="classic" value="classic" required><span> Selecionar o quarto
+                                            Luxo</span></label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="display-grid borda-padrao">
+                            <img class="imagem-padrao" src="@/assets/images/acomodacoes/acomodacoes-standard-1.png" alt="">
+                            <div>
+                                <h3 class="h3-primario">Premium</h3>
+                                <p class="p-primario">Standard ipsum dolor sit amet consectetur adipisicing elit. Sit
+                                    nobis aliquam quibusdam aliquid quam perferendis autem eum numquam earum nam
+                                    corporis mollitia cumque error, id quod laboriosam standard.
+                                </p>
+                                <p class="p-primario">
+                                    R$400,00
+                                </p>
+                                <div class="p-primario">
+                                    <label for="premium"> <input class="radioRoomChoice" type="radio" name="roomChoice"
+                                            id="premium" value="premium" required><span> Selecionar o quarto
+                                            Standard</span></label>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <div class=" borda-resumo-reserva resumo-reserva">
+                        <article class="resumo-reserva-conteudo" id="bookingSummary">
+                            <h3 class="h3-resumo-reservas">Resumo da reserva</h3>
+                            <div class="box-reservas">
+                                <div class="margin-padrao">Apartamento: <span class="" id="bookingApt"></span></div>
+                                <div class="margin-padrao">Check-in: <span class="" id="bookingCheckIn"></span></div>
+                                <div class="margin-padrao">Check-out: <span class="" id="bookingCheckOut"></span></div>
+                                <div class="margin-padrao">Pessoas: <span class="" id="bookingQtd"></span></div>
+                                <div class="margin-padrao esconder">Valor total: <span class=""
+                                        id="bookingValor"></span></div>
+                            </div>
+                            <div>
+                                <p><a class="link-padrao h3-primario" id="maisServicos" href="#."><i
+                                            class="fa fa-plus fa-2x" aria-hidden="true"></i> MAIS SERVIÇOS</a></p>
+
+                            </div>
+                            <div class="centralizar">
+                                <button class="btn-texto btn-resumo-reservas text-light" type="submit"
+                                    id="continuar">CONTINUAR</button>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </fieldset>
+
+        </section>
+        
+        <aside class="esconder">
+            <p>Espaço reservado para propagandas.</p>
+        </aside>
+    </main>
+
+    <div class="modal" id="modalContinuar" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Carrinho</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- CONTEUDO -->
+                    <div class="">
+
+                        <div class="borda-padrao">
+                            <h3 class="h3-primario" id="bookingApt_modal"></h3>
+                            <img class="imagem-padrao" id="bookingImg_modal" src="" alt="">
+
+                            <div id="modal-quarto">
+                                <h4 class="h3-primario">Descrição:</h4>
+                                <p class="p-primario"></p>
+                                <p class="p-primario"></p>
+                            </div>
+                        </div>
+
+
+                        <div class="margin-padrao">Check-in: <span class="" id="bookingCheckIn_modal"></span></div>
+                        <div class="margin-padrao">Check-out: <span class="" id="bookingCheckOut_modal"></span></div>
+                        <div class="margin-padrao">Pessoas: <span class="" id="bookingQtd_modal"></span></div>
+                        <div class="margin-padrao">Serviços Adicionais: <span class="" id="bookingAdd_modal"></span>
+                            <details>
+                                <summary>Detalhes</summary>
+                                <div id="resumoServicosAdicionais"></div>
+                            </details>   
+                        </div>
+                        <hr />
+                        <div class="margin-padrao">Valor total: <span class="" id="bookingValor_modal"></span></div>                     
+                    </div>
+                    <!-- CONTEUDO -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL MAIS SERVIÇOS -->
+    <div class="modal" id="modalMaisServicos" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Serviços adicionais</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- CONTEUDO -->
+                    <div class="">
+                        <div class="borda-padrao">
+                            <h3 class="h3-primario" id="bookingApt_modal"></h3>
+                            <img class="imagem-padrao" id="bookingImg_modal" src="" alt="">
+
+                            <div id="modal-servicos">
+                            </div>
+                        </div>
+
+                        <div class="margin-padrao">
+                            <ul id="bookingServices_modal"></ul>
+                        </div>
+                        <hr />
+                        <div class="margin-padrao">Valor total: <span class="valorTotal" id="valorTotal">R$ 0</span>
+                        </div>
+                    </div>
+                    <!-- CONTEUDO -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+    </main>
+</template>
