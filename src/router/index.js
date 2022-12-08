@@ -15,7 +15,7 @@ const routes = [
   {
     path: '/acomodacoes',
     name: 'acomodacoes',
-    // component: () => import('../views/AcomodacoesView.vue')
+    component: () => import('../views/AcomodacoesView.vue')
   },
   {
     path: '/reservas',
@@ -25,7 +25,7 @@ const routes = [
   {
     path: '/contato',
     name: 'contato',
-    // component: () => import('../views/ContatoView.vue')
+    component: () => import('../views/ContatoView.vue')
   }
 ]
 
