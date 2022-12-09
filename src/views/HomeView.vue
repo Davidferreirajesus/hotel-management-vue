@@ -16,7 +16,11 @@
         </div>
             
         <h3 class="h3-primario">Nossas acomodações</h3>
-        <ImagesCarouselAcomodacoes />
+        <ImagesCarousel tipo="acomodacoes" 
+          :imagem1="getImg('acomodacoes/acomodacoes-standard-2.png')"
+          :imagem2="getImg('acomodacoes/acomodacoes-luxo-2.png')"
+          :imagem3="getImg('acomodacoes/acomodacoes-presidencial-2.png')"
+        />
         <div class="p-top">
           <p class="p-primario">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex maxime dolorum sapiente qui quo velit fugiat iste ratione ullam distinctio, quisquam eaque porro quia asperiores omnis, tempora vero optio harum veniam assumenda quidem vel eveniet earum. Fuga sint esse, expedita, reiciendis quae dolor odio vitae, quod cum incidunt obcaecati dolore?</p>
         </div>
@@ -26,7 +30,11 @@
         </div>
         <p class="p-primario">GASTRONOMIA</p>
         <p class="p-primario">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic doloremque magnam beatae minima, quas ratione porro qui in voluptatibus ex natus at nesciunt molestias provident, animi repellendus necessitatibus inventore consequatur cum corporis? Id quidem sed quia neque suscipit libero excepturi eligendi. Libero quasi aperiam alias ab numquam a ipsum non.</p>
-        <!-- <ImagesCarousel /> -->
+        <ImagesCarousel tipo="gastronomia"
+          :imagem1="getImg('hotel/gastronomia-1.png')"
+          :imagem2="getImg('hotel/gastronomia-2.png')"
+          :imagem3="getImg('hotel/gastronomia-3.png')"
+        />
 
         <div class="p-top">
           <div class="col">
@@ -50,18 +58,16 @@
 
 <script>
 // @ is an alias to /src
-import ImagesCarouselAcomodacoes from '@/components/ImagesCarouselAcomodacoes.vue'
+import ImagesCarousel from '@/components/ImagesCarousel.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    ImagesCarouselAcomodacoes
+    ImagesCarousel
   },
-  data() {
-    return {
-      acomodacao_1: 'acomodacoes/acomodacoes-standard-2.png',
-      acomodacao_2: 'acomodacoes/acomodacoes-luxo-2.png',
-      acomodacao_3: 'acomodacoes/acomodacoes-presencial-2.png',
+  methods: {
+    getImg(url) {
+      return require('../assets/images/' + url)
     }
   }
 }
