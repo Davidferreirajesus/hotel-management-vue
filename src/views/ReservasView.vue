@@ -16,7 +16,7 @@
                     <span class="margin-left">
                         <input class="input-padrao" type="date" name="checkin" id="checkin" required>
                         <input class="input-padrao" type="date" name="checkout" id="checkout" required>
-                        <input class="input-padrao" type="number" name="qtdPessoas" id="qtdPessoas" min="1" required>
+                        <input class="input-padrao" type="number" name="qtdPessoas" id="qtdPessoas" min="1" max="4" required>
                     </span>
                     <p class="p-primario">Escolha o quarto</p>
                 </div>
