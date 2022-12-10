@@ -14,9 +14,9 @@
                         Forneça a data de entrada, saída e quantidade de pessoas.
                     </p>
                     <span class="margin-left">
-                        <input class="input-padrao" type="date" name="checkin" id="checkin" required>
-                        <input class="input-padrao" type="date" name="checkout" id="checkout" required>
-                        <input class="input-padrao" type="number" name="qtdPessoas" id="qtdPessoas" min="1" max="4" required>
+                        <input v-model="checkin" v-on:change="onChangeCheckin" class="input-padrao" type="date" name="checkin" id="checkin" required>
+                        <input v-model="checkout" v-on:change="onChangeCheckout" class="input-padrao" type="date" name="checkout" id="checkout" required>
+                        <input v-model="qtdPessoas" v-on:change="onChangeQtdPessoas" class="input-padrao" type="number" name="qtdPessoas" id="qtdPessoas" min="1" max="4" required>
                     </span>
                     <p class="p-primario">Escolha o quarto</p>
                 </div>
@@ -31,7 +31,7 @@
                                     corporis mollitia cumque error, id quod laboriosam presidencial.</p>
                                 <p class="p-primario">R$190,00</p>
                                 <div class="p-primario">
-                                    <label for="executive"> <input class="radioRoomChoice" type="radio"
+                                    <label for="executive"> <input v-on:click="choiceApt('Executive')" class="radioRoomChoice" type="radio"
                                             name="roomChoice" id="executive" value="executive" required><span>
                                             Selecionar o quarto Presidencial</span></label>
                                 </div>
@@ -50,7 +50,7 @@
                                 </p>
 
                                 <div class="p-primario">
-                                    <label for="classic"> <input class="radioRoomChoice" type="radio" name="roomChoice"
+                                    <label for="classic"> <input v-on:click="choiceApt('Classic')" class="radioRoomChoice" type="radio" name="roomChoice"
                                             id="classic" value="classic" required><span> Selecionar o quarto
                                             Luxo</span></label>
                                 </div>
@@ -69,7 +69,7 @@
                                     R$400,00
                                 </p>
                                 <div class="p-primario">
-                                    <label for="premium"> <input class="radioRoomChoice" type="radio" name="roomChoice"
+                                    <label for="premium"> <input v-on:click="choiceApt('Premium')" class="radioRoomChoice" type="radio" name="roomChoice"
                                             id="premium" value="premium" required><span> Selecionar o quarto
                                             Standard</span></label>
                                 </div>
@@ -193,3 +193,47 @@
 </body>
     </main>
 </template>
+
+<script>
+export default {
+    name:'ReservasView',
+    data(){
+        return{
+            checkin: localStorage.getItem('checkin'),
+            checkout: localStorage.getItem('checkout'),
+            qtdPessoas: localStorage.getItem('qtdPessoas')
+        }
+    },
+    methods:{
+        onChangeCheckin(){
+            const checkin = document.querySelector('#checkin');
+            const checkout = document.querySelector('#checkout');
+            localStorage.setItem('checkin', checkin.value);
+            document.querySelector('#bookingCheckIn').innerText = localStorage.getItem('checkin')
+            checkout.value = ''
+            document.querySelector('#bookingCheckOut').innerText = ''
+            localStorage.removeItem('checkout')
+
+        },
+        onChangeCheckout() {
+            const checkout = document.querySelector('#checkout');
+            const checkin = document.querySelector('#checkin');
+            if (checkout.value > checkin.value) {
+                localStorage.setItem('checkout', checkout.value);
+                document.querySelector('#bookingCheckOut').innerText = localStorage.getItem('checkout')
+            }else{
+                alert('A data do check-out deve ser posterior a de check-in')
+                checkout.value = ''
+            }
+        },
+        onChangeQtdPessoas() {
+            const qtdPessoas = document.querySelector('#qtdPessoas');
+            localStorage.setItem('qtdPessoas', qtdPessoas.value);
+            document.querySelector('#bookingQtd').innerText = localStorage.getItem('qtdPessoas')
+        },
+        choiceApt(name){
+            document.querySelector('#bookingApt').innerText = name
+        }
+    }
+}
+</script>
