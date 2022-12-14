@@ -1,5 +1,5 @@
 <template>
-    <input type="submit" :value="tipo" class="col">
+    <input type="submit" :value="tipo">
 </template>
 
 <script>

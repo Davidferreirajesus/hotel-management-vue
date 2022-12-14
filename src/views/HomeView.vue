@@ -38,8 +38,12 @@
 
         <div class="p-top">
           <div class="col">
-            <InputText id="newsletter" placeholder="Digite seu email aqui" />
-            <ButtonSubmit tipo="Enviar" class="btn-terceario" />
+            <label class="row" for="newsletter">
+              <p class="p-primario">Se inscreva na nossa newsletter e receba diariamente notícias e dicas de lugares para se
+              hospedar e promoções:</p>
+            </label>
+            <InputDefault id="newsletter" placeholder="Digite seu email aqui" tipo="email"/>
+            <ButtonSubmit tipo="Enviar" class="col btn-terceario" />
           </div>
         </div>
 
@@ -55,14 +59,14 @@
 <script>
 // @ is an alias to /src
 import ImagesCarousel from '@/components/ImagesCarousel.vue'
-import InputText from '@/components/InputText.vue'
+import InputDefault from '@/components/InputDefault.vue'
 import ButtonSubmit from '@/components/ButtonSubmit.vue'
 
 export default {
   name: 'HomeView',
   components: {
     ImagesCarousel,
-    InputText,
+    InputDefault,
     ButtonSubmit
   },
   methods: {
