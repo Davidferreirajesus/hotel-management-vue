@@ -119,6 +119,7 @@ export default {
             checkin: localStorage.getItem('checkin'),
             checkout: localStorage.getItem('checkout'),
             qtdPessoas: localStorage.getItem('qtdPessoas')
+            
         }
     },
     components: {
