@@ -1,10 +1,5 @@
 <template>
     <main>
-        <body>
-
-
-
-    <main>
         <section>
 
             <fieldset>
@@ -88,13 +83,14 @@
                                         id="bookingValor"></span></div>
                             </div>
                             <div>
-                                <p><a class="link-padrao h3-primario" id="maisServicos" href="#."><i
+                                <p><a class="link-padrao h3-primario" id="maisServicos" data-bs-toggle="modal" data-bs-target="#modalVue"
+                                    @click="showModal('mais_servicos')"><i
                                             class="fa fa-plus fa-2x" aria-hidden="true"></i> MAIS SERVIÇOS</a></p>
 
                             </div>
                             <div class="centralizar">
-                                <button class="btn-texto btn-resumo-reservas text-light" type="submit"
-                                    id="continuar">CONTINUAR</button>
+                                <button class="btn-texto btn-resumo-reservas text-light" data-bs-toggle="modal" data-bs-target="#modalVue"
+                                    @click="showModal('continuar')" id="continuar">CONTINUAR</button>
                             </div>
                         </article>
                     </div>
@@ -108,93 +104,14 @@
         </aside>
     </main>
 
-    <div class="modal" id="modalContinuar" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Carrinho</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- CONTEUDO -->
-                    <div class="">
-
-                        <div class="borda-padrao">
-                            <h3 class="h3-primario" id="bookingApt_modal"></h3>
-                            <img class="imagem-padrao" id="bookingImg_modal" src="" alt="">
-
-                            <div id="modal-quarto">
-                                <h4 class="h3-primario">Descrição:</h4>
-                                <p class="p-primario"></p>
-                                <p class="p-primario"></p>
-                            </div>
-                        </div>
-
-
-                        <div class="margin-padrao">Check-in: <span class="" id="bookingCheckIn_modal"></span></div>
-                        <div class="margin-padrao">Check-out: <span class="" id="bookingCheckOut_modal"></span></div>
-                        <div class="margin-padrao">Pessoas: <span class="" id="bookingQtd_modal"></span></div>
-                        <div class="margin-padrao">Serviços Adicionais: <span class="" id="bookingAdd_modal"></span>
-                            <details>
-                                <summary>Detalhes</summary>
-                                <div id="resumoServicosAdicionais"></div>
-                            </details>   
-                        </div>
-                        <hr />
-                        <div class="margin-padrao">Valor total: <span class="" id="bookingValor_modal"></span></div>                     
-                    </div>
-                    <!-- CONTEUDO -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- MODAL MAIS SERVIÇOS -->
-    <div class="modal" id="modalMaisServicos" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Serviços adicionais</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- CONTEUDO -->
-                    <div class="">
-                        <div class="borda-padrao">
-                            <h3 class="h3-primario" id="bookingApt_modal"></h3>
-                            <img class="imagem-padrao" id="bookingImg_modal" src="" alt="">
-
-                            <div id="modal-servicos">
-                            </div>
-                        </div>
-
-                        <div class="margin-padrao">
-                            <ul id="bookingServices_modal"></ul>
-                        </div>
-                        <hr />
-                        <div class="margin-padrao">Valor total: <span class="valorTotal" id="valorTotal">R$ 0</span>
-                        </div>
-                    </div>
-                    <!-- CONTEUDO -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                </div>
-            </div>
-        </div>
-    </div>
-
-</body>
-    </main>
+    <ModalView tipo='continuar' />
+    <ModalView tipo='mais_servicos' />
+    
 </template>
 
 <script>
+import ModalView from '@/components/ModalView.vue'
+
 export default {
     name:'ReservasView',
     data(){
@@ -203,6 +120,9 @@ export default {
             checkout: localStorage.getItem('checkout'),
             qtdPessoas: localStorage.getItem('qtdPessoas')
         }
+    },
+    components: {
+        ModalView
     },
     methods:{
         onChangeCheckin(){
@@ -233,6 +153,19 @@ export default {
         },
         choiceApt(name){
             document.querySelector('#bookingApt').innerText = name
+        },
+        showModal(id) {
+            if (id == 'mais_servicos') {
+                document.querySelector('#modalContinuar').classList.add('esconder')
+                document.querySelector('#modalMaisServicos').classList.remove('esconder')
+                console.log('SERV')
+            }
+            else if (id == 'continuar') {
+                document.querySelector('#modalMaisServicos').classList.add('esconder')
+                document.querySelector('#modalContinuar').classList.remove('esconder')
+                console.log('CONT')
+
+            }
         }
     }
 }
