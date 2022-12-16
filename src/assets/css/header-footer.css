@@ -47,7 +47,7 @@
 }
 
 .nav-link {
-  color: #e1c888;
+  color: #e1c888 !important;
 }
 .nav-link:hover {
   color: #cf9903;
