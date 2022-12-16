@@ -4,12 +4,12 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Carrinho</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     
-                    <div :v-if="tipo == 'continuar'" id="modalContinuar">
+                    <div id="modalContinuar">
+                        <h4 class="modal-title">Carrinho</h4>
                         <div class="borda-padrao">
                             <h3 class="h3-primario" id="bookingApt_modal"></h3>
                             <img class="imagem-padrao" id="bookingImg_modal" src="" alt="">
@@ -32,7 +32,8 @@
                         <div class="margin-padrao">Valor total: <span class="" id="bookingValor_modal"></span></div>                     
                     </div>
 
-                    <div :v-if="tipo == 'mais_servicos'" id="modalMaisServicos">
+                    <div id="modalMaisServicos">
+                        <h4 class="modal-title">Mais Serviços</h4>
                         <div class="borda-padrao">
                             <h3 class="h3-primario" id="bookingApt_modal"></h3>
                             <img class="imagem-padrao" id="bookingImg_modal" src="" alt="">
