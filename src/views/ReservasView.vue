@@ -104,8 +104,7 @@
         </aside>
     </main>
 
-    <ModalView tipo='continuar' />
-    <ModalView tipo='mais_servicos' />
+    <ModalView  />
     
 </template>
 
@@ -118,7 +117,56 @@ export default {
         return{
             checkin: localStorage.getItem('checkin'),
             checkout: localStorage.getItem('checkout'),
-            qtdPessoas: localStorage.getItem('qtdPessoas')
+            qtdPessoas: localStorage.getItem('qtdPessoas'),
+            quartos: [
+                {
+                    nome: "executive",
+                    valor: 190,
+                    descricao:
+                    "Descrição EXECUTIVE Standard ipsum dolor sit amet consectetur adipisicing elit. Sit nobis aliquam quibusdam aliquid quam perferendis autem eum numquam earum nam corporis mollitia cumque error, id quod laboriosam standard.",
+                },
+                {
+                    nome: "classic",
+                    valor: 250,
+                    descricao:
+                    "Descrição CLASSIC Standard ipsum dolor sit amet consectetur adipisicing elit. Sit nobis aliquam quibusdam aliquid quam perferendis autem eum numquam earum nam corporis mollitia cumque error, id quod laboriosam standard.",
+                },
+                {
+                    nome: "premium",
+                    valor: 400,
+                    descricao:
+                    "Descrição PREMIUM Standard ipsum dolor sit amet consectetur adipisicing elit. Sit nobis aliquam quibusdam aliquid quam perferendis autem eum numquam earum nam corporis mollitia cumque error, id quod laboriosam standard.",
+                },
+            ],
+            servicosAdicionais: [
+                {
+                    nome: "Academia",
+                    preco: 100,
+                },
+                {
+                    nome: "Early check-in/Late Check-in",
+                    preco: 50,
+                },
+                {
+                    nome: "Café da manhã",
+                    preco: 190,
+                },
+                {
+                    nome: "Serviço de lavanderia",
+                    preco: 100,
+                },
+                {
+                    nome: "Serviço de spa",
+                    preco: 250,
+                },
+            ],
+            criaInputNumber: '',
+            criaSpan: '',
+            precoServico: '',
+            inpServicosQtd: '',
+            inputServicos: '',
+            arrayValorServicos: [], 
+            valorTServicos: ''
         }
     },
     components: {
@@ -150,23 +198,221 @@ export default {
             const qtdPessoas = document.querySelector('#qtdPessoas');
             localStorage.setItem('qtdPessoas', qtdPessoas.value);
             document.querySelector('#bookingQtd').innerText = localStorage.getItem('qtdPessoas')
+            const that = this
+
+            //zera servicos caso a qtdPessoas seja inferior a quantidade de determinado serviço e atualiza o preço total de serviços
+            this.inpServicosQtd.forEach(function(valorInput, index){
+                if(valorInput.value > qtdPessoas.value){
+                valorInput.value = 0
+                localStorage.setItem(`inpServicosQtd${index+1}`, valorInput.value)
+                that.arrayValorServicos[index] = that.servicosAdicionais[index].preco * valorInput.value
+                that.valorTServicos = that.arrayValorServicos.reduce((somaParcial, a) => somaParcial + a, 0);
+                document.querySelector("#valorTotal").innerHTML = `R$${that.valorTServicos.toFixed(2)}`
+                localStorage.setItem("valorTServicos", that.valorTServicos)
+                } 
+            })
+            
+            switch (document.querySelector("#bookingApt").innerText) {
+                case "Classic":
+                document.querySelector("#bookingValor_modal").innerText = `R$ ${(
+                    (this.quartos[1]["valor"] * this.qtdAtual) + parseInt(localStorage.getItem("valorTServicos"))
+                ).toFixed(2)}`;
+                break;
+                case "Premium":
+                document.querySelector("#bookingValor_modal").innerText = `R$ ${(
+                    (this.quartos[2]["valor"] * this.qtdAtual + parseInt(localStorage.getItem("valorTServicos")))
+                ).toFixed(2)}`;
+                break;
+                default:
+                document.querySelector("#bookingValor_modal").innerText = `R$ ${(
+                    (this.quartos[0]["valor"] * this.qtdAtual) + parseInt(localStorage.getItem("valorTServicos"))
+                ).toFixed(2)}`;
+                break;
+            }
         },
         choiceApt(name){
             document.querySelector('#bookingApt').innerText = name
+            localStorage.setItem('quarto', name)
         },
         showModal(id) {
             if (id == 'mais_servicos') {
                 document.querySelector('#modalContinuar').classList.add('esconder')
                 document.querySelector('#modalMaisServicos').classList.remove('esconder')
-                console.log('SERV')
+                const that = this
+
+                this.inpServicosQtd.forEach(function(valorInput, index){
+                    document.querySelector(`#inputServicos:nth-of-type(${index+1})`).setAttribute("max", localStorage.getItem('qtdPessoas'))
+                    that.precoServico[index].innerHTML = `${that.servicosAdicionais[index].nome} - R$${(that.servicosAdicionais[index].preco).toFixed(2)}`
+                    valorInput.addEventListener("change", function(){
+                        localStorage.setItem(`inpServicosQtd${index+1}`, valorInput.value)
+                        that.arrayValorServicos[index] = that.servicosAdicionais[index].preco * valorInput.value
+                        that.valorTServicos = that.arrayValorServicos.reduce((somaParcial, valorAtual) => somaParcial + valorAtual, 0);
+                        document.querySelector("#valorTotal").innerHTML = `R$${that.valorTServicos.toFixed(2)}`
+                        console.log(`R$${that.valorTServicos.toFixed(2)}`)
+                        localStorage.setItem("valorTServicos", that.valorTServicos)
+                    })
+                    that.arrayValorServicos[index] = that.servicosAdicionais[index].preco * valorInput.value
+                })
             }
             else if (id == 'continuar') {
                 document.querySelector('#modalMaisServicos').classList.add('esconder')
                 document.querySelector('#modalContinuar').classList.remove('esconder')
-                console.log('CONT')
 
+                if (
+                    localStorage.getItem("quarto") &&
+                    localStorage.getItem("checkin") &&
+                    localStorage.getItem("checkout") &&
+                    localStorage.getItem("qtdPessoas")
+                ) {
+                    document.querySelector("#bookingApt_modal").innerText =
+                    localStorage.getItem("quarto")[0].toUpperCase() +
+                    localStorage.getItem("quarto").substr(1);
+                    document.querySelector("#bookingCheckIn_modal").innerText =
+                    localStorage.getItem("checkin");
+                    document.querySelector("#bookingCheckOut_modal").innerText =
+                    localStorage.getItem("checkout");
+                    document.querySelector("#bookingQtd_modal").innerText =
+                    localStorage.getItem("qtdPessoas");
+                    document.querySelector("#bookingAdd_modal").innerText = 
+                        `R$ ${parseInt(localStorage.getItem("valorTServicos")).toFixed(2)}`;
+
+                    switch (localStorage.getItem("quarto")) {
+                        case "Classic":
+                            document.querySelector("#modal-quarto p:nth-of-type(1)").innerText =
+                            this.quartos[1]["descricao"];
+                            document.querySelector(
+                            "#modal-quarto p:nth-of-type(2)"
+                            ).innerText = `R$ ${this.quartos[1]["valor"].toFixed(2)}`;
+                            document.querySelector("#bookingImg_modal").src = require(
+                            "@/assets/images/acomodacoes/acomodacoes-luxo-1.png");
+                            document.querySelector("#bookingValor_modal").innerText = `R$ ${(
+                            (this.quartos[1]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
+                            ).toFixed(2)}`;
+                            break;
+                        case "Premium":
+                            document.querySelector("#modal-quarto p:nth-of-type(1)").innerText =
+                            this.quartos[2]["descricao"];
+                            document.querySelector(
+                            "#modal-quarto p:nth-of-type(2)"
+                            ).innerText = `R$ ${this.quartos[2]["valor"].toFixed(2)}`;
+                            document.querySelector("#bookingImg_modal").src = require(
+                            "@/assets/images/acomodacoes/acomodacoes-standard-1.png");
+                            document.querySelector("#bookingValor_modal").innerText = `R$ ${(
+                            (this.quartos[2]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
+                            ).toFixed(2)}`;
+                            break;
+                        default:
+                            document.querySelector("#modal-quarto p:nth-of-type(1)").innerText =
+                            this.quartos[0]["descricao"];
+                            document.querySelector(
+                            "#modal-quarto p:nth-of-type(2)"
+                            ).innerText = `R$ ${this.quartos[0]["valor"].toFixed(2)}`;
+                            document.querySelector("#bookingImg_modal").src = require(
+                            "@/assets/images/acomodacoes/acomodacoes-presidencial-1.png");
+                            document.querySelector("#bookingValor_modal").innerText = `R$ ${(
+                            (this.quartos[0]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
+                            ).toFixed(2)}`;
+                            break;
+                        }
+
+                }
+
+                //Deleta todos os spans da div #resumoServicosAdicionais enquanto tiver filhos, para evitar duplicação/acumulação de texto
+                const divServicosAdicionais = document.getElementById("resumoServicosAdicionais");
+                    while (divServicosAdicionais.firstChild) {
+                    divServicosAdicionais.removeChild(divServicosAdicionais.lastChild);
+                }
+
+                //cria os spans com os textos incluindo os serviços adicionais escolhidos no modal de mais serviços
+                const that = this 
+                this.inpServicosQtd.forEach(function(valorInput, index){
+                    if(valorInput.value != 0){
+                        that.criaSpan = document.createElement("span")
+                        that.criaSpan.setAttribute("class", "detalhesServicosAdicionais")
+                        that.criaSpan.setAttribute("class", "d-block")
+                        document.getElementById("resumoServicosAdicionais").appendChild(that.criaSpan)
+                        that.criaSpan.innerHTML = `${that.servicosAdicionais[index].nome} x${valorInput.value}`
+                    }
+                })
+
+                //verifica se a div #resumoServicosAdicionais não possui filhos, se verdadeiro cria um texto pro usuário considerar escolher um
+                if(document.getElementById('resumoServicosAdicionais').childElementCount == 0){
+                    this.criaSpan = document.createElement("span")
+                    this.criaSpan.setAttribute("class", "semServico")
+                    document.getElementById("resumoServicosAdicionais").appendChild(this.criaSpan)
+                    this.criaSpan.innerHTML = `Nenhum serviço escolhido, favor considere`
+                }
+            } else {
+                alert("Por favor, preencha todos os campos!");
             }
         }
+    },
+    mounted: function() {
+        // Carrega informações do localstorage (caso já exista)
+        if (localStorage.getItem("checkin")) {
+            document.querySelector("#bookingCheckIn").innerText =
+                localStorage.getItem("checkin");
+        }
+
+        if (localStorage.getItem("checkout")) {
+            document.querySelector("#bookingCheckOut").innerText =
+                localStorage.getItem("checkout");
+        }
+
+        if (localStorage.getItem("qtdPessoas")) {
+            document.querySelector("#bookingQtd").innerText = localStorage.getItem("qtdPessoas");
+        }
+
+        if (localStorage.getItem("quarto")) {
+            switch (localStorage.getItem("quarto")) {
+                case "Classic":
+                    document.querySelector("#bookingApt").innerText = "Classic";
+                    document.querySelector("#bookingValor_modal").innerText = `R$ ${(
+                        (this.quartos[1]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
+                    ).toFixed(2)}`;
+                    document.querySelector("#classic").checked = true;
+                    break;
+                case "Premium":
+                    document.querySelector("#bookingApt").innerText = "Premium";
+                    document.querySelector("#bookingValor_modal").innerText = `R$ ${(
+                        (this.quartos[2]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
+                    ).toFixed(2)}`;
+                    document.querySelector("#premium").checked = true;
+                    break;
+                default:
+                    document.querySelector("#bookingApt").innerText = "Executive";
+                    document.querySelector("#bookingValor_modal").innerText = `R$ ${(
+                        (this.quartos[0]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
+                    ).toFixed(2)}`;
+                    document.querySelector("#executive").checked = true;
+                    break;
+            }
+        }
+        
+        for(let i = 1; i <= this.servicosAdicionais.length; i++){
+            this.criaInputNumber = document.createElement("input")
+            this.criaSpan = document.createElement("span")
+            this.criaInputNumber.setAttribute("type", "number")
+            this.criaInputNumber.setAttribute("min", "0")
+            this.criaInputNumber.setAttribute("value", "1")
+            this.criaInputNumber.setAttribute("class", "d-block")
+            this.criaInputNumber.setAttribute("id", "inputServicos")
+            this.criaInputNumber.setAttribute("name", "valores")
+            this.criaSpan.setAttribute("class", "precoServico")
+            document.getElementById("modal-servicos").appendChild(this.criaSpan);
+            document.getElementById("modal-servicos").appendChild(this.criaInputNumber);
+            if(i == this.servicosAdicionais.length){
+                this.precoServico = document.querySelectorAll(".precoServico")
+                this.inpServicosQtd = document.getElementsByName('valores')
+                this.inputServicos = document.querySelectorAll("#inputServicos")
+            } 
+        }
+
+        window.onload = this.inpServicosQtd.forEach(function(valorInput, index){
+            localStorage.getItem(`inpServicosQtd${index+1}`) ? valorInput.value = localStorage.getItem(`inpServicosQtd${index+1}`) : null
+            localStorage.getItem("valorTServicos") ? document.querySelector("#valorTotal").innerHTML = `R$${parseInt(localStorage.getItem("valorTServicos")).toFixed(2)}` : null
+        })
+
     }
 }
 </script>
