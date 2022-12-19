@@ -416,3 +416,151 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.esconder {
+    display: none;
+}
+.p-top {
+    padding: 1rem 0 0 0;
+}
+
+.h2-primario {
+    padding: 0 1.5rem;
+    text-align: start;
+    color: #213242;
+    font: "Quicksand";
+}
+
+.p-primario {
+    padding: 0 1.5rem;
+    text-align: start;
+    color: #213242;
+    font: "Quicksand";
+}
+
+.margin-left {
+    margin: 0 0.5rem;
+}
+
+.display-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.borda-padrao {
+    margin: 3rem;
+    padding: 1rem;
+    border-radius: 15px;
+    box-shadow: 1px 3px 5px #213242;
+}
+
+.imagem-padrao {
+    margin: 1.5rem;
+    width: 90%;
+}
+
+.borda-resumo-reserva {
+    margin: 10vh 5vh;
+    padding: 1rem;
+    border-radius: 15px;
+    box-shadow: 1px 3px 5px #213242;
+}
+
+.borda-resumo-reserva:hover {
+    box-shadow: 1px 4px 10px #213242;
+}
+
+.resumo-reserva-conteudo {
+    margin-top: 3vw;
+}
+
+.resumo-reserva {
+    height: 35rem;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.h3-resumo-reservas {
+    padding: 0 1.5rem;
+    text-align: start;
+    color: #213242;
+    font: "Quicksand";
+    text-align: center;
+}
+
+.box-reservas {
+    background-color: rgba(225, 200, 136, 0.7);
+    width: 100%;
+    padding: 3%;
+    text-align: start;
+    margin-top: 2rem;
+}
+
+.margin-padrao {
+    padding: 0.5rem;
+}
+
+.link-padrao {
+    padding: 0 1.5rem;
+    text-align: start;
+    color: #213242;
+    font: "Quicksand";
+    text-decoration: none;
+}
+
+.link-padrao:hover {
+    color: #cf9903;
+}
+
+.centralizar {
+    text-align: center;
+    align-items: center;
+}
+
+.btn-texto {
+    color: white;
+    font: "Quicksand";
+    text-align: center;
+    font-size: 1vw;
+}
+
+.btn-resumo-reservas {
+    background-color: #213242;
+    border: none;
+    box-shadow: 3px 1px 8px white inset;
+    border-radius: 20px;
+    width: 100%;
+    height: 3rem;
+}
+
+@media (max-width: 1170px) {
+    .display-grid {
+        display: inline-block;
+    }
+
+    .resumo-reserva {
+        display: inline-block;
+        width: 80%;
+        height: 35rem;
+    }
+
+    .btn-padrao {
+        width: 80%;
+    }
+
+    .btn-beje {
+        width: 20vh;
+        height: 6vh;
+        border: 1px solid #e1c888;
+        border-radius: 30px;
+        background-color: #e1c888;
+        box-shadow: 3px 3px 5px #b3b3b4;
+    }
+
+    .btn-texto {
+        font-size: larger;
+    }
+}
+</style>
