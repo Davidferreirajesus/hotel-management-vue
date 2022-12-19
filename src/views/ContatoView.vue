@@ -36,14 +36,14 @@
             <!-- Menu Select -->
             <ul class="list-style">
               <li class="contato-li">
-                <label for="assuntos">Escolha o assunto que deseja falar:</label
-                ><br />
-                <select name="assuntos_opt" id="assuntos_opt">
-                  <option value="null_opc">...</option>
-                  <option value="cancelamento">Cancelamento de Reserva</option>
-                  <option value="financeiro">Departamento Financeiro</option>
-                  <option value="ouvidoria">Ouvidoria</option>
-                </select>
+                <label for="assuntos" class="p-primario">Escolha o assunto que deseja falar:</label>
+                <br />
+                <MenuSelect 
+                opt00="..."
+                opt01="Cancelamento de Reserva"
+                opt02="Departamento Financeiro"
+                opt03="Ouvidoria"                
+                />
               </li>
             </ul>
 
@@ -70,16 +70,18 @@
 </template>
 
 <script>
-import InputText from '@/components/InputText.vue';
-import TextArea from '@/components/TextArea.vue';
-import ButtonSubmit from '@/components/ButtonSubmit.vue';
+import InputText from '@/components/InputText.vue'
+import MenuSelect from '@/components/MenuSelect.vue'
+import TextArea from '@/components/TextArea.vue'
+import ButtonSubmit from '@/components/ButtonSubmit.vue'
 
 export default {
   name: 'ContatoView',
   components: {
     InputText,
     ButtonSubmit,
-    TextArea
+    TextArea,
+    MenuSelect
   },
   methods: {
     enviar(e) {
