@@ -76,3 +76,32 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.esconder {
+  display: none;
+}
+.p-top {
+  padding: 1rem 0 0 0;
+}
+.h2-primario {
+  padding: 0 1.5rem;
+  text-align: start;
+  color: #213242;
+  font: "Quicksand";
+}
+
+.p-primario {
+  padding: 0 1.5rem;
+  text-align: start;
+  color: #213242;
+  font: "Quicksand";
+}
+
+.h3-primario {
+  padding: 0 1.5rem;
+  text-align: start;
+  color: #213242;
+  font: "Quicksand";
+}
+</style>
