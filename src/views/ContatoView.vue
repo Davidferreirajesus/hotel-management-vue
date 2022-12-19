@@ -1,98 +1,92 @@
 <template>
-  <main class="contato-responsivo ">
+
+  <main class="contato-responsivo">
     <section class="contato-estiloForm section-pd p-top">
       <article>
         <h2 class="h2-primario">Entre em contato conosco</h2>
 
-        <form class="h3-primario " action="">
+        <form class="h3-primario" action="" @submit="enviar($event)">
           <fieldset class="fieldLogin fieldsetLogin">
-            <legend class="contato-legenda ">
-                Preencha todos os dados 
-            </legend>
+            <legend class="contato-legenda">Preencha todos os dados</legend>
 
+            <!-- Nome -->
             <ul class="list-style">
               <li class="contato-li">
-                <label for="nome">Nome:</label><br />
-                <input class="input-basico"
-                  type="text"
-                  name="nome"
-                  id="nome"
-                  size="30"
-                  autofocus
+                <label for="nome" class="p-primario">Nome:</label><br />             
+                <InputText />
+              </li>
+            </ul>
+
+            <!-- E-mail -->
+            <ul class="list-style">
+              <li class="contato-li">
+                <label for="email" class="p-primario">E-mail:</label><br />
+                <InputText />
+              </li>
+            </ul>
+
+            <!-- Telefone -->
+            <ul class="list-style">
+              <li class="contato-li">
+                <label for="telefone" class="p-primario">Telefone:</label><br />
+                <InputText />
+              </li>
+            </ul>
+
+            <!-- Menu Select -->
+            <ul class="list-style">
+              <li class="contato-li">
+                <label for="assuntos" class="p-primario">Escolha o assunto que deseja falar:</label>
+                <br />
+                <MenuSelect 
+                opt00="..."
+                opt01="Cancelamento de Reserva"
+                opt02="Departamento Financeiro"
+                opt03="Ouvidoria"                
                 />
               </li>
             </ul>
 
+            <!-- Text area -->
             <ul class="list-style">
               <li class="contato-li">
-                <label for="email">E-mail:</label><br />
-                <input class="input-basico" 
-                type="text" 
-                name="email" 
-                id="email" 
-                size="30" />
+                <label for="nome" class="p-primario">Digite sua mensagem:</label><br />
+                <TextArea />
               </li>
             </ul>
 
-            <ul class="list-style">
-              <li class="contato-li">
-                <label for="telefone">Telefone:</label><br />
-                <input class="input-basico" 
-                type="text" 
-                name="telefone" 
-                id="telefone" 
-                size="30" />
-              </li>
+            <!-- TButton -->
+            <ul class="contato-div-button">          
+              <ButtonSubmit value="Enviar" class="contato-button btn-terceario"/>
             </ul>
-
-            <ul class="list-style">
-              <li class="contato-li">
-                <label for="assuntos"
-                  >Escolha o assunto que deseja falar:</label
-                ><br />
-                <select name="assuntos_opt" id="assuntos_opt">
-                  <option value="null_opc"></option>
-                  <option value="cancelamento">
-                    Cancelamento de Reserva
-                  </option>
-                  <option value="financeiro">Departamento Financeiro</option>
-                  <option value="ouvidoria">Ouvidoria</option>
-                </select>
-              </li>
-            </ul>
-
-            <ul class="list-style">
-              <li class="contato-li">
-                <label for="nome">Digite sua mensagem:</label><br />
-                <textarea
-                  name="textArea form-control"
-                  id="textArea"
-                  class="contato-textArea "
-                  cols="40"
-                  rows="10"
-                ></textarea>
-              </li>
-            </ul>
-
-            <ul class="contato-div-button">
-              <ButtonSubmit tipo="Enviar" class="contato-button btn-terceario" />
-            </ul>
-            
           </fieldset>
         </form>
       </article>
     </section>
-    <aside class="esconder"></aside>
-  </main>
+    <aside class="hide"></aside>
+  </main> 
+
+
 </template>
 
 <script>
+import InputText from '@/components/InputText.vue'
+import MenuSelect from '@/components/MenuSelect.vue'
+import TextArea from '@/components/TextArea.vue'
 import ButtonSubmit from '@/components/ButtonSubmit.vue'
 
 export default {
-  name: "ContatoView",
+  name: 'ContatoView',
   components: {
-    ButtonSubmit
+    InputText,
+    ButtonSubmit,
+    TextArea,
+    MenuSelect
+  },
+  methods: {
+    enviar(e) {
+      e.preventDefault()
+    }
   }
 }
 </script>
