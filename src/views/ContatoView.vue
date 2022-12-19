@@ -63,7 +63,7 @@
         </form>
       </article>
     </section>
-    <aside class="hide"></aside>
+    <aside class="esconder"></aside>
   </main> 
 
 
@@ -90,3 +90,71 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.esconder {
+  display: none;
+}
+.p-top {
+  padding: 1rem 0 0 0;
+}
+
+.h2-primario {
+  padding: 0 1.5rem;
+  text-align: start;
+  color: #213242;
+  font: "Quicksand";
+}
+
+.h3-primario {
+  padding: 0 1.5rem;
+  text-align: start;
+  color: #213242;
+  font: "Quicksand";
+}
+
+.list-style {
+  list-style: none;
+}
+
+.p-primario {
+  padding: 0 1.5rem;
+  text-align: start;
+  color: #213242;
+  font: "Quicksand";
+}
+
+.input-basico {
+  border: white solid 1px;
+  margin: 0.5rem;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 1px 3px 5px #213242;
+  width: 70vw;
+  height: 2.5rem;
+}
+
+.contato-textArea{
+  width: 80%;
+}
+
+.btn-terceario {
+  border: white solid 1px;
+  margin: 1rem;
+  width: 22vw;
+  height: 2.5rem;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 1px 3px 5px #213242;
+}
+
+.btn-terceario {
+  border: white solid 1px;
+  margin: 1rem;
+  width: 22vw;
+  height: 2.5rem;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 1px 3px 5px #213242;
+}
+</style>
