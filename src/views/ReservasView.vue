@@ -18,17 +18,15 @@
                 <section class="display-grid">
                     <article class=" ">
                         <div class="display-grid borda-padrao">
-                            <img class="imagem-padrao" src="@/assets/images/acomodacoes/acomodacoes-presidencial-1.png" alt="">
+                            <img class="imagem-padrao" src="@/assets/images/acomodacoes/acomodacoes-standard-1.png" alt="">
                             <div class=" ">
-                                <h3 class="h3-primario">Executive</h3>
-                                <p class="p-primario">Executive ipsum dolor sit amet consectetur adipisicing elit. Sit
-                                    nobis aliquam quibusdam aliquid quam perferendis autem eum numquam earum nam
-                                    corporis mollitia cumque error, id quod laboriosam presidencial.</p>
+                                <h3 class="h3-primario">Standard</h3>
+                                <p class="p-primario">Com 60 m², nossas suítes Standard, dispõem de cama Twin e banheiros com box separado.</p>
                                 <p class="p-primario">R$190,00</p>
                                 <div class="p-primario">
-                                    <label for="executive"> <input v-on:click="choiceApt('Executive')" class="radioRoomChoice" type="radio"
-                                            name="roomChoice" id="executive" value="executive" required><span>
-                                            Selecionar o quarto Presidencial</span></label>
+                                    <label for="standard"> <input v-on:click="choiceApt('Standard')" class="radioRoomChoice" type="radio"
+                                            name="roomChoice" id="standard" value="standard" required><span>
+                                            Selecionar o quarto Standard</span></label>
                                 </div>
 
                             </div>
@@ -36,37 +34,35 @@
                         <div class="display-grid borda-padrao">
                             <img class="imagem-padrao" src="@/assets/images/acomodacoes/acomodacoes-luxo-1.png" alt="">
                             <div>
-                                <h3 class="h3-primario">Classic</h3>
-                                <p class="p-primario">Luxo ipsum dolor sit amet consectetur adipisicing elit. Sit nobis
-                                    aliquam quibusdam aliquid quam perferendis autem eum numquam earum nam corporis
-                                    mollitia cumque error, id quod laboriosam luxo.</p>
+                                <h3 class="h3-primario">Luxo</h3>
+                                <p class="p-primario">Com 90 m², nossas suítes Luxo, dispõem de cama King Size ou Twin e ainda uma confortável área de trabalho. A ampla sala
+                                de estar está mobiliada com poltrona, sofá e mesa de café. Os banheiros contam com box separado.</p>
                                 <p class="p-primario">
                                     R$250,00
                                 </p>
 
                                 <div class="p-primario">
-                                    <label for="classic"> <input v-on:click="choiceApt('Classic')" class="radioRoomChoice" type="radio" name="roomChoice"
-                                            id="classic" value="classic" required><span> Selecionar o quarto
+                                    <label for="luxo"> <input v-on:click="choiceApt('Luxo')" class="radioRoomChoice" type="radio" name="roomChoice"
+                                            id="luxo" value="luxo" required><span> Selecionar o quarto
                                             Luxo</span></label>
                                 </div>
 
                             </div>
                         </div>
                         <div class="display-grid borda-padrao">
-                            <img class="imagem-padrao" src="@/assets/images/acomodacoes/acomodacoes-standard-1.png" alt="">
+                            <img class="imagem-padrao" src="@/assets/images/acomodacoes/acomodacoes-presidencial-1.png" alt="">
                             <div>
-                                <h3 class="h3-primario">Premium</h3>
-                                <p class="p-primario">Standard ipsum dolor sit amet consectetur adipisicing elit. Sit
-                                    nobis aliquam quibusdam aliquid quam perferendis autem eum numquam earum nam
-                                    corporis mollitia cumque error, id quod laboriosam standard.
+                                <h3 class="h3-primario">Presidencial</h3>
+                                <p class="p-primario">Com 160 m², nossas suítes Presidenciais contam com espaços privilegiados, cozinha, escritório e sala de estar. O
+                                dormitório apresenta um espaço grande, único, integrado e muito iluminado, com vista exuberante.
                                 </p>
                                 <p class="p-primario">
                                     R$400,00
                                 </p>
                                 <div class="p-primario">
-                                    <label for="premium"> <input v-on:click="choiceApt('Premium')" class="radioRoomChoice" type="radio" name="roomChoice"
-                                            id="premium" value="premium" required><span> Selecionar o quarto
-                                            Standard</span></label>
+                                    <label for="presidencial"> <input v-on:click="choiceApt('Presidencial')" class="radioRoomChoice" type="radio" name="roomChoice"
+                                            id="presidencial" value="presidencial" required><span> Selecionar o quarto
+                                            Presidencial</span></label>
                                 </div>
                             </div>
                         </div>
@@ -120,22 +116,22 @@ export default {
             qtdPessoas: localStorage.getItem('qtdPessoas'),
             quartos: [
                 {
-                    nome: "executive",
+                    nome: "standard",
                     valor: 190,
                     descricao:
-                    "Descrição EXECUTIVE Standard ipsum dolor sit amet consectetur adipisicing elit. Sit nobis aliquam quibusdam aliquid quam perferendis autem eum numquam earum nam corporis mollitia cumque error, id quod laboriosam standard.",
+                    "Com 60 m², nossas suítes Standard, dispõem de cama Twin e banheiros com box separado.",
                 },
                 {
-                    nome: "classic",
+                    nome: "luxo",
                     valor: 250,
                     descricao:
-                    "Descrição CLASSIC Standard ipsum dolor sit amet consectetur adipisicing elit. Sit nobis aliquam quibusdam aliquid quam perferendis autem eum numquam earum nam corporis mollitia cumque error, id quod laboriosam standard.",
+                    "Com 90 m², nossas suítes Luxo, dispõem de cama King Size ou Twin e ainda uma confortável área de trabalho. A ampla sala de estar está mobiliada com poltrona, sofá e mesa de café. Os banheiros contam com box separado.",
                 },
                 {
-                    nome: "premium",
+                    nome: "presidencial",
                     valor: 400,
                     descricao:
-                    "Descrição PREMIUM Standard ipsum dolor sit amet consectetur adipisicing elit. Sit nobis aliquam quibusdam aliquid quam perferendis autem eum numquam earum nam corporis mollitia cumque error, id quod laboriosam standard.",
+                        "Com 160 m², nossas suítes Presidenciais contam com espaços privilegiados, cozinha, escritório e sala de estar. O dormitório apresenta um espaço grande, único, integrado e muito iluminado, com vista exuberante.",
                 },
             ],
             servicosAdicionais: [
@@ -213,12 +209,12 @@ export default {
             })
             
             switch (document.querySelector("#bookingApt").innerText) {
-                case "Classic":
+                case "Luxo":
                 document.querySelector("#bookingValor_modal").innerText = `R$ ${(
                     (this.quartos[1]["valor"] * this.qtdAtual) + parseInt(localStorage.getItem("valorTServicos"))
                 ).toFixed(2)}`;
                 break;
-                case "Premium":
+                case "presidencial":
                 document.querySelector("#bookingValor_modal").innerText = `R$ ${(
                     (this.quartos[2]["valor"] * this.qtdAtual + parseInt(localStorage.getItem("valorTServicos")))
                 ).toFixed(2)}`;
@@ -277,7 +273,7 @@ export default {
                         `R$ ${parseInt(localStorage.getItem("valorTServicos")).toFixed(2)}`;
 
                     switch (localStorage.getItem("quarto")) {
-                        case "Classic":
+                        case "Luxo":
                             document.querySelector("#modal-quarto p:nth-of-type(1)").innerText =
                             this.quartos[1]["descricao"];
                             document.querySelector(
@@ -289,7 +285,7 @@ export default {
                             (this.quartos[1]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
                             ).toFixed(2)}`;
                             break;
-                        case "Premium":
+                        case "Presidencial":
                             document.querySelector("#modal-quarto p:nth-of-type(1)").innerText =
                             this.quartos[2]["descricao"];
                             document.querySelector(
@@ -365,26 +361,26 @@ export default {
 
         if (localStorage.getItem("quarto")) {
             switch (localStorage.getItem("quarto")) {
-                case "Classic":
-                    document.querySelector("#bookingApt").innerText = "Classic";
+                case "Luxo":
+                    document.querySelector("#bookingApt").innerText = "Luxo";
                     document.querySelector("#bookingValor_modal").innerText = `R$ ${(
                         (this.quartos[1]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
                     ).toFixed(2)}`;
-                    document.querySelector("#classic").checked = true;
+                    document.querySelector("#luxo").checked = true;
                     break;
-                case "Premium":
-                    document.querySelector("#bookingApt").innerText = "Premium";
+                case "Presidencial":
+                    document.querySelector("#bookingApt").innerText = "Presidencial";
                     document.querySelector("#bookingValor_modal").innerText = `R$ ${(
                         (this.quartos[2]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
                     ).toFixed(2)}`;
-                    document.querySelector("#premium").checked = true;
+                    document.querySelector("#presidencial").checked = true;
                     break;
                 default:
-                    document.querySelector("#bookingApt").innerText = "Executive";
+                    document.querySelector("#bookingApt").innerText = "Standard";
                     document.querySelector("#bookingValor_modal").innerText = `R$ ${(
                         (this.quartos[0]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
                     ).toFixed(2)}`;
-                    document.querySelector("#executive").checked = true;
+                    document.querySelector("#standard").checked = true;
                     break;
             }
         }

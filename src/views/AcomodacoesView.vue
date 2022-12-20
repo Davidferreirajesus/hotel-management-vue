@@ -6,14 +6,14 @@
       </div>
 
       <div class="p-top" >
-        <h3 class="h3-primario">Quartos Presidenciais:</h3>
+        <h3 class="h3-primario">Quartos Standard:</h3>
       </div>
       <div class="acomodacoes acomodacoes--presidencial">
-        <router-link to="/reservas"><AcomodacaoCard id="1"/></router-link>
-        <router-link to="/reservas"><AcomodacaoCard id="2"/></router-link>
-        <router-link to="/reservas"><AcomodacaoCard id="3"/></router-link>
+        <router-link to="/reservas"><AcomodacaoCard id="7"/></router-link>
+        <router-link to="/reservas"><AcomodacaoCard id="8"/></router-link>
+        <router-link to="/reservas"><AcomodacaoCard id="9"/></router-link>
         <div class="p-top">
-            <p class="p-primario">Com 80 m², nossas suítes Luxo, dispõem de cama King Size ou Twin e ainda uma confortável área de trabalho. A ampla sala de estar está mobiliada com poltrona, sofá e mesa de café. Os banheiros contam com box separado.</p>          
+            <p class="p-primario">Com 60 m², nossas suítes Standard, dispõem de cama Twin e banheiros com box separado.</p>          
         </div>
         
       </div>
@@ -26,20 +26,22 @@
         <router-link to="/reservas"><AcomodacaoCard id="5"/></router-link>
         <router-link to="/reservas"><AcomodacaoCard id="6"/></router-link>
         <div class="p-top">
-            <p class="p-primario">Com 160 m², nossas suítes Presidenciais contam com espaços privilegiados, cozinha, escritório e sala de estar. O dormitório apresenta um espaço grande, único, integrado e muito iluminado, com vista exuberante. Além disso, dispõe de banheiro com uma espaçosa jacuzzi, chuveiro “rain shower” duplo e sauna. Os hóspedes da suíte têm direito a massagens no nosso Spa e podem contar com serviço de concierge e mordomo 24 horas por dia.</p>
+            <p class="p-primario">Com 90 m², nossas suítes Luxo, dispõem de cama King Size ou Twin e ainda uma confortável área de trabalho. A ampla sala de estar está mobiliada com poltrona, sofá e mesa de café. Os banheiros contam com box separado.</p>
         </div>
         
       </div>
 
       <div class="p-top">
-        <h3 class="h3-primario">Quartos Standard:</h3>
+        <h3 class="h3-primario">Quartos Presidenciais:</h3>
       </div>
       <div class="acomodacoes acomodacoes--standard">
-        <router-link to="/reservas"><AcomodacaoCard id="7" /></router-link>
-        <router-link to="/reservas"><AcomodacaoCard id="8"/></router-link>
-        <router-link to="/reservas"><AcomodacaoCard id="9"/></router-link>
+        <router-link to="/reservas"><AcomodacaoCard id="1" /></router-link>
+        <router-link to="/reservas"><AcomodacaoCard id="2"/></router-link>
+        <router-link to="/reservas"><AcomodacaoCard id="3"/></router-link>
         <div class="p-top">
-            <p class="p-primario">Com 80 m², nossas suítes Luxo, dispõem de cama King Size ou Twin e ainda uma confortável área de trabalho. A ampla sala de estar está mobiliada com poltrona, sofá e mesa de café. Os banheiros contam com box separado.</p>          
+            <p class="p-primario">Com 160 m², nossas suítes Presidenciais contam com espaços privilegiados, cozinha, escritório e sala de estar. O dormitório apresenta um espaço grande, único, integrado e muito iluminado, com vista exuberante. Além disso, dispõe de
+            banheiro com uma espaçosa jacuzzi, chuveiro “rain shower” duplo e sauna. Os hóspedes da suíte têm direito a massagens no
+            nosso Spa e podem contar com serviço de concierge e mordomo 24 horas por dia.</p>          
         </div>
         
       </div>
