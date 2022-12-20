@@ -36,6 +36,11 @@
   </body>
 </template>
 
+<script>
+export default {
+  name: 'SobreView',
+}
+</script>
 
 <style scoped>
 .p-top {
