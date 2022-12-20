@@ -64,20 +64,24 @@
   width: 75px;
 }
 
-@media (max-width: 738px) {
+@media (max-width: 734px) {
   .header--container{
     height: 240px;
   } 
 }
 
-@media (max-width: 592px) {
+@media (max-width: 579px) {
   .header--container {
     height: 200px;
   }
 }
 
-@media (max-width: 496px) {
+@media (max-width: 489px) {
   .header--container {
-    height: 150px;
+    height: 170px;
+    background-color: #213242;
   }
 }
+
+
+

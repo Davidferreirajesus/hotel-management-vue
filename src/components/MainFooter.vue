@@ -35,8 +35,8 @@
                     <p class="text-center color--bege">Veja no maps</p>
                 </div>
             </div>
-            <div class="row-sm-10 p-1 text-end">
-                <span class="color--bege">Grand Royal Hotel&copy;2022 - Todos os direitos reservados.</span>
+            <div class="p-1">
+                <span class="color--bege text-center">Grand Royal Hotel&copy;2022 - Todos os direitos reservados.</span>
             </div>
         </div>
     </footer>
