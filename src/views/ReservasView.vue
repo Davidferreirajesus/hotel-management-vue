@@ -86,7 +86,7 @@
                             </div>
                             <div class="centralizar">
                                 <button class="btn-texto btn-resumo-reservas text-light" data-bs-toggle="modal" data-bs-target="#modalVue"
-                                    @click="showModal('continuar')" id="continuar">CONTINUAR</button>
+                                    @click.prevent.self="showModal('continuar')" id="continuar">CONTINUAR</button>
                             </div>
                         </article>
                     </div>
@@ -230,9 +230,10 @@ export default {
             document.querySelector('#bookingApt').innerText = name
             localStorage.setItem('quarto', name)
         },
-        showModal(id) {
+        showModal(id) {         
             if (id == 'mais_servicos') {
                 document.querySelector('#modalContinuar').classList.add('esconder')
+                document.querySelector('#modalFaltamDados').classList.add('esconder')
                 document.querySelector('#modalMaisServicos').classList.remove('esconder')
                 const that = this
 
@@ -242,18 +243,20 @@ export default {
                     valorInput.addEventListener("change", function(){
                         localStorage.setItem(`inpServicosQtd${index+1}`, valorInput.value)
                         that.arrayValorServicos[index] = that.servicosAdicionais[index].preco * valorInput.value
-                        that.valorTServicos = that.arrayValorServicos.reduce((somaParcial, valorAtual) => somaParcial + valorAtual, 0);
+                        that.valorTServicos = that.arrayValorServicos.reduce((somaParcial, valorAtual) => somaParcial + valorAtual, 0)
                         document.querySelector("#valorTotal").innerHTML = `R$${that.valorTServicos.toFixed(2)}`
-                        console.log(`R$${that.valorTServicos.toFixed(2)}`)
                         localStorage.setItem("valorTServicos", that.valorTServicos)
                     })
                     that.arrayValorServicos[index] = that.servicosAdicionais[index].preco * valorInput.value
                 })
             }
             else if (id == 'continuar') {
+                // Mostrar modal "continuar"
                 document.querySelector('#modalMaisServicos').classList.add('esconder')
+                document.querySelector('#modalFaltamDados').classList.add('esconder')
                 document.querySelector('#modalContinuar').classList.remove('esconder')
-
+                
+                // Caso os dados já estejam em localstorage, recupera valor
                 if (
                     localStorage.getItem("quarto") &&
                     localStorage.getItem("checkin") &&
@@ -298,24 +301,24 @@ export default {
                             ).toFixed(2)}`;
                             break;
                         default:
-                            document.querySelector("#modal-quarto p:nth-of-type(1)").innerText =
-                            this.quartos[0]["descricao"];
-                            document.querySelector(
-                            "#modal-quarto p:nth-of-type(2)"
-                            ).innerText = `R$ ${this.quartos[0]["valor"].toFixed(2)}`;
-                            document.querySelector("#bookingImg_modal").src = require(
-                            "@/assets/images/acomodacoes/acomodacoes-presidencial-1.png");
-                            document.querySelector("#bookingValor_modal").innerText = `R$ ${(
-                            (this.quartos[0]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
-                            ).toFixed(2)}`;
+                            document.querySelector("#modal-quarto p:nth-of-type(1)").innerText = this.quartos[0]["descricao"]
+                            document.querySelector("#modal-quarto p:nth-of-type(2)").innerText = `R$ ${this.quartos[0]["valor"].toFixed(2)}`
+                            document.querySelector("#bookingImg_modal").src = require("@/assets/images/acomodacoes/acomodacoes-presidencial-1.png")
+                            document.querySelector("#bookingValor_modal").innerText = 
+                                `R$ ${((this.quartos[0]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))).toFixed(2)}`;
                             break;
                         }
 
                 }
+                else {
+                    document.querySelector('#modalMaisServicos').classList.add('esconder')
+                    document.querySelector('#modalContinuar').classList.add('esconder')
+                    document.querySelector('#modalFaltamDados').classList.remove('esconder')
+                }
 
                 //Deleta todos os spans da div #resumoServicosAdicionais enquanto tiver filhos, para evitar duplicação/acumulação de texto
                 const divServicosAdicionais = document.getElementById("resumoServicosAdicionais");
-                    while (divServicosAdicionais.firstChild) {
+                while (divServicosAdicionais.firstChild) {
                     divServicosAdicionais.removeChild(divServicosAdicionais.lastChild);
                 }
 
@@ -338,8 +341,6 @@ export default {
                     document.getElementById("resumoServicosAdicionais").appendChild(this.criaSpan)
                     this.criaSpan.innerHTML = `Nenhum serviço escolhido, favor considere`
                 }
-            } else {
-                alert("Por favor, preencha todos os campos!");
             }
         }
     },
@@ -384,6 +385,18 @@ export default {
                     break;
             }
         }
+
+        // Caso não haja nenhum valor atribuído aos serviços adicionais, salva '0' em sua quantidade
+        for(let i = 1; i <= this.servicosAdicionais.length; i++){
+            if(! localStorage.getItem(`inpServicosQtd${i}`)) {
+                localStorage.setItem(`inpServicosQtd${i}`, 0)
+            }
+            
+            this.arrayValorServicos[i-1] = this.servicosAdicionais[i-1].preco * localStorage.getItem(`inpServicosQtd${i}`)
+            this.valorTServicos = this.arrayValorServicos.reduce((somaParcial, valorAtual) => somaParcial + valorAtual, 0)
+        }
+        document.querySelector("#valorTotal").innerHTML = `R$${this.valorTServicos.toFixed(2)}`
+        localStorage.setItem("valorTServicos", this.valorTServicos)
         
         for(let i = 1; i <= this.servicosAdicionais.length; i++){
             this.criaInputNumber = document.createElement("input")
@@ -391,7 +404,7 @@ export default {
             this.criaInputNumber.setAttribute("type", "number")
             this.criaInputNumber.setAttribute("min", "0")
             this.criaInputNumber.setAttribute("value", "1")
-            this.criaInputNumber.setAttribute("class", "d-block")
+            this.criaInputNumber.setAttribute("class", "d-block m-auto")
             this.criaInputNumber.setAttribute("id", "inputServicos")
             this.criaInputNumber.setAttribute("name", "valores")
             this.criaSpan.setAttribute("class", "precoServico")

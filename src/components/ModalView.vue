@@ -49,6 +49,11 @@
                         </div>
                     </div>
 
+                    <div id="modalFaltamDados">
+                        <h4 class="modal-title">Dados incompletos!</h4>
+                        <p>Para visualizar, favor preencher todos os dados</p>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
