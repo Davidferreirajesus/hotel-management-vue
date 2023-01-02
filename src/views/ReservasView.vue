@@ -171,29 +171,39 @@ export default {
                 } 
             })
             
-            switch (document.querySelector("#bookingApt").innerText) {
-                case "luxo":
-                document.querySelector("#bookingValor_modal").innerText = `R$ ${(
-                    (this.quartos[1]["valor"] * this.qtdAtual) + parseInt(localStorage.getItem("valorTServicos"))
-                ).toFixed(2)}`;
-                break;
-                case "presidencial":
-                document.querySelector("#bookingValor_modal").innerText = `R$ ${(
-                    (this.quartos[2]["valor"] * this.qtdAtual + parseInt(localStorage.getItem("valorTServicos")))
-                ).toFixed(2)}`;
-                break;
-                default:
-                document.querySelector("#bookingValor_modal").innerText = `R$ ${(
-                    (this.quartos[0]["valor"] * this.qtdAtual) + parseInt(localStorage.getItem("valorTServicos"))
-                ).toFixed(2)}`;
-                break;
-            }
+            // this.qtdAtual = parseInt(localStorage.getItem("qtdPessoas"))
+            // switch (localStorage.getItem("quarto")) {
+            //     case "luxo":
+            //         localStorage.setItem("valorTotal", (this.quartos[1]["valor"] * this.qtdAtual) + parseInt(localStorage.getItem("valorTServicos")))
+            //         break
+            //     case "presidencial":
+            //         localStorage.setItem("valorTotal", (this.quartos[2]["valor"] * this.qtdAtual) + parseInt(localStorage.getItem("valorTServicos")))
+            //         break;
+            //     default:
+            //         localStorage.setItem("valorTotal", (this.quartos[0]["valor"] * this.qtdAtual) + parseInt(localStorage.getItem("valorTServicos")))
+            //         break;
+            // }
+            // document.querySelector("#bookingValor_modal").innerText = `R$ ${localStorage.getItem("valorTotal")}`
         },
-        // choiceApt(name){
-        //     document.querySelector('#bookingApt').innerText = name
-        //     localStorage.setItem('quarto', name)
-        // },
-        showModal(id) {         
+        calculateTotal() {
+            // Realiza o cálculo baseado no quarto escolhido e nos serviços adicionais inseridos
+            switch (localStorage.getItem("quarto")) {
+                case "luxo":
+                    localStorage.setItem("valorTotal", this.quartos[1]["valor"] * parseInt(localStorage.getItem("qtdPessoas")) + parseInt(localStorage.getItem("valorTServicos")))
+                    break
+                case "presidencial":
+                    localStorage.setItem("valorTotal", this.quartos[2]["valor"] * parseInt(localStorage.getItem("qtdPessoas")) + parseInt(localStorage.getItem("valorTServicos")))
+                    break;
+                default:
+                    localStorage.setItem("valorTotal", this.quartos[0]["valor"] * parseInt(localStorage.getItem("qtdPessoas")) + parseInt(localStorage.getItem("valorTServicos")))
+                    break;
+            }
+
+            document.querySelector("#bookingValor_modal").innerText = `R$ ${localStorage.getItem("valorTotal")},00`
+        },
+        showModal(id) {
+            document.querySelector('#confirmarReserva').classList.add('d-none')
+
             if (id == 'mais_servicos') {
                 document.querySelector('#modalContinuar').classList.add('esconder')
                 document.querySelector('#modalFaltamDados').classList.add('esconder')
@@ -214,6 +224,8 @@ export default {
                 })
             }
             else if (id == 'continuar') {
+                this.calculateTotal()
+
                 // Mostrar modal "continuar"
                 document.querySelector('#modalMaisServicos').classList.add('esconder')
                 document.querySelector('#modalFaltamDados').classList.add('esconder')
@@ -226,6 +238,7 @@ export default {
                     localStorage.getItem("checkout") &&
                     localStorage.getItem("qtdPessoas")
                 ) {
+                    document.querySelector('#confirmarReserva').classList.remove('d-none')
                     document.querySelector("#bookingApt_modal").innerText =
                     localStorage.getItem("quarto")[0].toUpperCase() +
                     localStorage.getItem("quarto").substr(1);
@@ -238,6 +251,7 @@ export default {
                     document.querySelector("#bookingAdd_modal").innerText = 
                         `R$ ${parseInt(localStorage.getItem("valorTServicos")).toFixed(2)}`;
 
+                    this.qtdPessoas = parseInt(localStorage.getItem("qtdPessoas"))
                     switch (localStorage.getItem("quarto")) {
                         case "luxo":
                             document.querySelector("#modal-quarto p:nth-of-type(1)").innerText =
@@ -247,9 +261,9 @@ export default {
                             ).innerText = `R$ ${this.quartos[1]["valor"].toFixed(2)}`;
                             document.querySelector("#bookingImg_modal").src = require(
                             "@/assets/images/acomodacoes/acomodacoes-luxo-1.png");
-                            document.querySelector("#bookingValor_modal").innerText = `R$ ${(
-                            (this.quartos[1]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
-                            ).toFixed(2)}`;
+                            // document.querySelector("#bookingValor_modal").innerText = `R$ ${(
+                            // (this.quartos[1]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
+                            // ).toFixed(2)}`;
                             break;
                         case "presidencial":
                             document.querySelector("#modal-quarto p:nth-of-type(1)").innerText =
@@ -259,16 +273,16 @@ export default {
                             ).innerText = `R$ ${this.quartos[2]["valor"].toFixed(2)}`;
                             document.querySelector("#bookingImg_modal").src = require(
                             "@/assets/images/acomodacoes/acomodacoes-standard-1.png");
-                            document.querySelector("#bookingValor_modal").innerText = `R$ ${(
-                            (this.quartos[2]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
-                            ).toFixed(2)}`;
+                            // document.querySelector("#bookingValor_modal").innerText = `R$ ${(
+                            // (this.quartos[2]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
+                            // ).toFixed(2)}`;
                             break;
                         default:
                             document.querySelector("#modal-quarto p:nth-of-type(1)").innerText = this.quartos[0]["descricao"]
                             document.querySelector("#modal-quarto p:nth-of-type(2)").innerText = `R$ ${this.quartos[0]["valor"].toFixed(2)}`
                             document.querySelector("#bookingImg_modal").src = require("@/assets/images/acomodacoes/acomodacoes-presidencial-1.png")
-                            document.querySelector("#bookingValor_modal").innerText = 
-                                `R$ ${((this.quartos[0]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))).toFixed(2)}`;
+                            // document.querySelector("#bookingValor_modal").innerText = 
+                            //     `R$ ${((this.quartos[0]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))).toFixed(2)}`;
                             break;
                         }
 
@@ -307,46 +321,72 @@ export default {
             }
         }
     },
+    beforeMount: function() {
+        // Organiza ordem das acomodações - default(standard, luxo, presidencial)
+        if (localStorage.getItem("quarto") == "luxo") {
+            let aux = this.quartos[0]
+            this.quartos[0] = this.quartos[1]
+            this.quartos[1] = aux
+        }
+        else if (localStorage.getItem("quarto") == "presidencial") {
+            let aux = this.quartos[0]
+
+            this.quartos[0] = this.quartos[2]
+            this.quartos[2] = aux
+        }
+    },
     mounted: function() {
         // Carrega informações do localstorage (caso já exista)
         if (localStorage.getItem("checkin")) {
             document.querySelector("#bookingCheckIn").innerText =
                 localStorage.getItem("checkin");
         }
+        else {
+            document.querySelector("#bookingCheckIn").innerText = ''
+        }
 
         if (localStorage.getItem("checkout")) {
             document.querySelector("#bookingCheckOut").innerText =
                 localStorage.getItem("checkout");
         }
+        else {
+            document.querySelector("#bookingCheckOut").innerText = ''
+        }
 
         if (localStorage.getItem("qtdPessoas")) {
             document.querySelector("#bookingQtd").innerText = localStorage.getItem("qtdPessoas");
+        }
+        else {
+            document.querySelector("#bookingQtd").innerText = ''
         }
 
         if (localStorage.getItem("quarto")) {
             switch (localStorage.getItem("quarto")) {
                 case "luxo":
                     document.querySelector("#bookingApt").innerText = "luxo";
-                    document.querySelector("#bookingValor_modal").innerText = `R$ ${(
-                        (this.quartos[1]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
-                    ).toFixed(2)}`;
+                    // document.querySelector("#bookingValor_modal").innerText = `R$ ${(
+                    //     (this.quartos[1]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
+                    // ).toFixed(2)}`;
                     document.querySelector("#luxo").checked = true;
                     break;
                 case "presidencial":
                     document.querySelector("#bookingApt").innerText = "presidencial";
-                    document.querySelector("#bookingValor_modal").innerText = `R$ ${(
-                        (this.quartos[2]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
-                    ).toFixed(2)}`;
+                    // document.querySelector("#bookingValor_modal").innerText = `R$ ${(
+                    //     (this.quartos[2]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
+                    // ).toFixed(2)}`;
                     document.querySelector("#presidencial").checked = true;
                     break;
                 default:
                     document.querySelector("#bookingApt").innerText = "Standard";
-                    document.querySelector("#bookingValor_modal").innerText = `R$ ${(
-                        (this.quartos[0]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
-                    ).toFixed(2)}`;
+                    // document.querySelector("#bookingValor_modal").innerText = `R$ ${(
+                    //     (this.quartos[0]["valor"] * this.qtdPessoas) + parseInt(localStorage.getItem("valorTServicos"))
+                    // ).toFixed(2)}`;
                     document.querySelector("#standard").checked = true;
                     break;
             }
+        }
+        else {
+            document.querySelector("#bookingApt").innerText = ''
         }
 
         // Caso não haja nenhum valor atribuído aos serviços adicionais, salva '0' em sua quantidade

@@ -21,7 +21,7 @@ export default {
         nomeQuarto: String,
         imagemQuarto: String,
         descricaoQuarto: String,
-        valorQuarto: String
+        valorQuarto: Number
     },
     methods: {
         choiceApt(name){
