@@ -17,9 +17,9 @@
             
         <h3 class="h3-primario text-center my-5">Nossas acomodações</h3>
         <div class="acomodacoes acomodacoes--presidencial acomodacoes--luxo acomodacoes--standard">
-          <router-link to="/reservas"><AcomodacaoCard id="1" /></router-link>
-          <router-link to="/reservas"><AcomodacaoCard id="4" /></router-link>
-          <router-link to="/reservas"><AcomodacaoCard id="7" /></router-link>
+          <router-link to="/reservas"><AcomodacaoCard id="1" v-on:click="escolherPresidencial()"/></router-link>
+          <router-link to="/reservas"><AcomodacaoCard id="4" v-on:click="escolherLuxo()" /></router-link>
+          <router-link to="/reservas"><AcomodacaoCard id="7" v-on:click="escolherStandard()"/></router-link>
         </div>
         
         <ImagesCarousel tipo="acomodacoes" 
@@ -79,6 +79,15 @@ export default {
   methods: {
     getImg(url) {
       return require('../assets/images/' + url)
+    },
+    escolherPresidencial(){
+      console.log('presidencial')
+    },
+    escolherLuxo() {
+      console.log('luxo')
+    },
+    escolherStandard() {
+      console.log('standard')
     }
   }
 }

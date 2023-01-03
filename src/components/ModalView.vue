@@ -56,7 +56,10 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button id="confirmarReserva" type="submit" class="d-none btn btn-primary" data-bs-dismiss="modal" @click="addReserva">Confirmar reserva</button>
+                    <router-link to="/minhasreservas">
+                        <button id="confirmarReserva" type="submit" class="d-none btn btn-primary" data-bs-dismiss="modal" @click="addReserva">Confirmar reserva</button>
+                    </router-link>
+                    
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                 </div>
                 </div>
