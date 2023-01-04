@@ -2,7 +2,7 @@
 
   <main class="contato-responsivo">
     <section class="contato-estiloForm section-pd p-top">
-      <article>
+      <article class="">
         <h2 class="h2-primario">Entre em contato conosco</h2>
 
         <form class="h3-primario" action="" @submit="enviar($event)">
@@ -57,7 +57,7 @@
 
             <!-- TButton -->
             <ul class="contato-div-button">          
-              <ButtonSubmit value="Enviar" class="contato-button btn-terceario"/>
+              <ButtonSubmit value="Enviar" class="btn-terceario"/>
             </ul>
           </fieldset>
         </form>
@@ -115,6 +115,7 @@ export default {
 
 .list-style {
   list-style: none;
+  width: 40%;
 }
 
 .p-primario {
@@ -134,10 +135,6 @@ export default {
   height: 2.5rem;
 }
 
-.contato-textArea{
-  width: 80%;
-}
-
 .btn-terceario {
   border: white solid 1px;
   margin: 1rem;
@@ -146,15 +143,6 @@ export default {
   text-align: center;
   border-radius: 10px;
   box-shadow: 1px 3px 5px #213242;
-}
-
-.btn-terceario {
-  border: white solid 1px;
-  margin: 1rem;
-  width: 22vw;
-  height: 2.5rem;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 1px 3px 5px #213242;
+  font-size: large;
 }
 </style>

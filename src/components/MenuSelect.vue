@@ -1,5 +1,5 @@
 <template>
-  <select name="assuntos_opt" id="assuntos_opt" class="input-padrao p-primario">
+  <select name="assuntos_opt" id="assuntos_opt" class="input-padrao input-basico p-primario">
     <option value="">{{opt00}}</option>
     <option value="">{{opt01}}</option>
     <option value="">{{opt02}}</option>
