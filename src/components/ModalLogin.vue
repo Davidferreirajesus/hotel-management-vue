@@ -91,7 +91,7 @@ export default {
             localStorage.setItem('login', cadastroEmail)
             document.querySelector('#logado').classList.remove('esconder')
             document.querySelector('#cadastro').classList.add('esconder')
-            document.querySelector('#logado-usuario').innerText = cadastroUser
+            document.querySelector('#logado-usuario').innerText = `Bem-vindo ${cadastroUser}`
 
         },
         // Limpa os dados preenchidos do cadastro

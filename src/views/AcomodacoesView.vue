@@ -8,7 +8,7 @@
       <div class="p-top" >
         <h3 class="h3-primario">Quartos Standard:</h3>
       </div>
-      <div class="acomodacoes acomodacoes--presidencial">
+      <div class="acomodacoes acomodacoes--standard">
         <router-link to="/reservas"><AcomodacaoCard id="7"/></router-link>
         <router-link to="/reservas"><AcomodacaoCard id="8"/></router-link>
         <router-link to="/reservas"><AcomodacaoCard id="9"/></router-link>
@@ -34,7 +34,7 @@
       <div class="p-top">
         <h3 class="h3-primario">Quartos Presidenciais:</h3>
       </div>
-      <div class="acomodacoes acomodacoes--standard">
+      <div class="acomodacoes acomodacoes--presidencial">
         <router-link to="/reservas"><AcomodacaoCard id="1" /></router-link>
         <router-link to="/reservas"><AcomodacaoCard id="2"/></router-link>
         <router-link to="/reservas"><AcomodacaoCard id="3"/></router-link>
