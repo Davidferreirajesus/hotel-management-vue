@@ -116,8 +116,6 @@ export default {
             }
             document.querySelector("#loginEmail").value = ''
             document.querySelector("#loginPass").value = ''        
-
-            console.log(loginEmail, loginPass, valida)
         },
         // Valida se o login realizado está na lista de cadastros (email e senha)
         validaLogin(loginEmail, loginPass) {
