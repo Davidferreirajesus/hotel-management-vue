@@ -3,7 +3,7 @@
         <!-- <p class="p-primario">Se inscreva na nossa newsletter e receba diariamente notícias e dicas de lugares para se
         hospedar e promoções:</p> -->
     </label>
-    <input class="input-padrao input-basico p-primario" type="text" :id="id" :placeholder="placeholder">
+    <input class="input-padrao input-basico p-primario" :type="tipo" :id="id" :placeholder="placeholder">
 </template>
 
 <script>
@@ -12,6 +12,7 @@ export default {
     props: {
         id: String,
         placeholder: String,
+        tipo: String
     }
 }
 </script>

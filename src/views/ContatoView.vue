@@ -13,7 +13,7 @@
             <ul class="list-style">
               <li class="contato-li">
                 <label for="nome" class="p-primario">Nome:</label><br />             
-                <InputText />
+                <InputText tipo="text"/>
               </li>
             </ul>
 
@@ -21,7 +21,7 @@
             <ul class="list-style">
               <li class="contato-li">
                 <label for="email" class="p-primario">E-mail:</label><br />
-                <InputText />
+                <InputText tipo="email"/>
               </li>
             </ul>
 
@@ -29,7 +29,7 @@
             <ul class="list-style">
               <li class="contato-li">
                 <label for="telefone" class="p-primario">Telefone:</label><br />
-                <InputText />
+                <InputText tipo="number"/>
               </li>
             </ul>
 
