@@ -125,16 +125,6 @@ export default {
   font: "Quicksand";
 }
 
-.input-basico {
-  border: white solid 1px;
-  margin: 0.5rem;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 1px 3px 5px #213242;
-  width: 70vw;
-  height: 2.5rem;
-}
-
 .btn-terceario {
   border: white solid 1px;
   margin: 1rem;
@@ -145,4 +135,5 @@ export default {
   box-shadow: 1px 3px 5px #213242;
   font-size: large;
 }
+
 </style>

@@ -12,8 +12,9 @@ export default {
 .textArea-padrao {
   border: white solid 1px;
   margin: 1rem;
+  padding: 15px;
   border-radius: 10px;
   box-shadow: 1px 3px 5px #213242;
-  width: 90%;
+  width: 70vw;
 }
 </style>
